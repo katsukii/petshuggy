@@ -34,7 +34,7 @@
             <sjpan class="caret">
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><%= link_to "プロフィール" %></li>
+            <li><%= link_to "プロフィール", user_path(current_user) %></li>
             <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
           </ul>
         </li>        
