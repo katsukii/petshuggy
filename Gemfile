@@ -40,8 +40,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem 'toastr-rails'
 gem 'omniauth-facebook'
-
-
+gem "paperclip", "~> 6.0.0"
+gem 'dropzonejs-rails'
 
 
 group :development, :test do
