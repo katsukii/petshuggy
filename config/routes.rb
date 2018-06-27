@@ -1,16 +1,15 @@
 Rails.application.routes.draw do
-  get 'listings/index'
-  get 'listings/show'
-  get 'listings/new'
-  get 'listings/create'
-  get 'listings/edit'
-  get 'listings/update'
   resources :listings
-    
+
   root :to => "pages#index"
 
   devise_for :users, controllers: { :omniauth_callbacks => 'users/omniauth_callbacks', :registrations => 'registrations' }
   resources :users, only: [:show]
+  resources :photos, only: [:create, :destroy] do
+    collection do
+      get :list
+    end
+  end
   get 'manage-listing/:id/basics' => 'listings#basics', as: 'manage-listing_basics'
   get 'manage-listing/:id/description' => 'listings#description', as: 'manage_listing_description'
   get 'manage-listing/:id/address' => 'listings#address', as: 'manage_listing_address'
