@@ -3,7 +3,7 @@ class PhotosController < ApplicationController
         @photo = Photo.new(photo_params)
         if @photo.save
             render json: { message: "success", photoId: @photo.id }, status: 200
-        else 
+        else
             render json: { error: @photo.errors.full_messages.join(", ") }, status: 400
         end
     end
@@ -17,14 +17,14 @@ class PhotosController < ApplicationController
         end
     end
 
-    def list 
+    def list
         listing = Listing.find(params[:listing_id])
         photos = []
         Photo.where(listing_id: listing.id).each do |photo|
             new_photo = {
-                id: photo.id, 
-                name: photo.image_file_name, 
-                size: photo.image_file_size, 
+                id: photo.id,
+                name: photo.image_file_name,
+                size: photo.image_file_size,
                 src: photo.image(:thumb)
             }
             photos.push(new_photo)
